@@ -10,8 +10,9 @@ log() {
 
 make_backup(){
   log "Making full backup..."
-  tar -czvf backups/full/academiaa-$(date +%Y-%m-%d-%H-%M).tar.gz academiaa/
+  tar -zcf backups/full/academiaa-$(date +%Y-%m-%d-%H-%M).tar.gz academiaa/
   cp -r academiaa/{app.db,migrations} important/db/
+  rm -rf backups/last
   mv academiaa backups/last
 }
 init_venv(){
