@@ -40,7 +40,7 @@ restore_db(){
 }
 
 main(){
-  cd /home/$USER
+  cd "/home/$USER"
   export FLASK_APP=wsgi
   make_backup
   git clone https://github.com/andy-takker/academiaa.git
