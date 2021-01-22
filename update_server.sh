@@ -6,7 +6,7 @@ set -o pipefail
 
 make_backup(){
   echo "Making full backup..."
-  tar -zxvf backups/full/academiaa-$(date +%Y-%m-%d-%H-%M).tar.gz academiaa/
+  tar -czvf backups/full/academiaa-$(date +%Y-%m-%d-%H-%M).tar.gz academiaa/
   cp -r academiaa/{app.db,migrations} important/db/
   mv academiaa backups/last
 }
