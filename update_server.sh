@@ -30,8 +30,10 @@ init_new_db(){
 }
 update_db(){
   echo "Updating current version..."
-  academiaa/venv/bin/flask db migrate -m "$1"
-  academiaa/venv/bin/flask db upgrade
+  cd academiaa
+  venv/bin/flask db migrate -m "$1"
+  venv/bin/flask db upgrade
+  cd ..
 }
 
 restore_db(){
@@ -41,12 +43,13 @@ restore_db(){
 
 main(){
   cd "/home/$USER"
-  export FLASK_APP=wsgi
+  export FLASK_APP=/home/sergey/academiaa/wsgi
   make_backup
   git clone https://github.com/andy-takker/academiaa.git
   init_venv
   copy_settings
   restore_db
+  echo "Restarting service..."
   sudo systemctl restart academiaa.service
 }
 
