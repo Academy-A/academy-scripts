@@ -5,7 +5,8 @@ set -o nounset
 set -o pipefail
 
 log() {
-    echo "[$(date '+%H:%M:%S %Y-%m-%d')] [$0]" $1
+  # форматированный вывод логов
+  echo "[$(date '+%H:%M:%S %d-%m-%Y')] [$0]" $1
 }
 
 make_backup(){
@@ -35,8 +36,8 @@ init_new_db(){
 }
 update_db(){
   log "Updating current version..."
-  venv/bin/flask db migrate -m "$1"
-  venv/bin/flask db upgrade
+  academiaa/venv/bin/flask db migrate -m "$1"
+  academiaa/venv/bin/flask db upgrade
 }
 
 restore_db(){
