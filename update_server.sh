@@ -8,7 +8,7 @@ make_backup(){
   echo "Making full backup..."
   tar -zxvf backups/full/academiaa-$(date +%Y-%m-%d-%H-%M).tar.gz academiaa/
   cp -r academiaa/{app.db,migrations} important/db/
-  mv academiaa backup
+  mv academiaa backups/last
 }
 init_venv(){
   echo "Initializing venv..."
@@ -40,6 +40,7 @@ restore_db(){
 }
 
 main(){
+  cd /home/sergey
   export FLASK_APP=wsgi
   make_backup
   git clone https://github.com/andy-takker/academiaa.git
