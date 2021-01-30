@@ -36,8 +36,10 @@ init_new_db(){
 }
 update_db(){
   log "Updating current version..."
-  academiaa/venv/bin/flask db migrate -m "$1"
-  academiaa/venv/bin/flask db upgrade
+  cd academiaa
+  venv/bin/flask db migrate -m "$1"
+  venv/bin/flask db upgrade
+  cd ..
 }
 
 restore_db(){
