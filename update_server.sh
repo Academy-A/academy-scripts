@@ -4,9 +4,11 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
+
+
 log() {
   # форматированный вывод логов
-  echo "[$(date '+%H:%M:%S %d-%m-%Y')] [$0]" $1
+  echo -e "\033[37m[$(date '+%H:%M:%S %d-%m-%Y')]\033[0m \033[33m[$0]\033[0m" $1
 }
 
 make_backup(){
